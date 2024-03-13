@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.Period;
+
 @Data
 @Entity
 @Table(name = "students")
@@ -19,4 +21,7 @@ public class Student {
     @Transient
     private int age;
 
+    public int getAge() {
+        return Period.between(dateOfBirth, LocalDate.now()).getYears()+1;
+    }
 }
